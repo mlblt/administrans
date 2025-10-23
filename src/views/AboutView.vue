@@ -11,8 +11,7 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
   twitterTitle: title,
-  twitterDescription: description,
-  
+  twitterDescription: description
 })
 
 const plausibleEnabled = import.meta.env.VITE_PLAUSIBLE_URL
@@ -33,7 +32,8 @@ function deleteData() {
       en France.
     </p>
     <p>
-      Il est directement inspiré du projet Trans-CEC lancé en 2019 par Maria Climent-Pommeret, et des
+      Il est directement inspiré du projet Trans-CEC lancé en 2019 par Maria Climent-Pommeret, et
+      des
       <a href="https://github.com/entropyqueen/trans-cec#ont-contribu%C3%A9">
         contributions et améliorations apportées par des bénévoles.
       </a>
@@ -85,11 +85,14 @@ function deleteData() {
       qui vous paraissent importantes.
     </p>
     <p>
-      <strong>À l'heure actuelle, nous recherchons activement des retours d'utilisateur·ices du service, qu'ils soient positifs ou négatifs.</strong>
+      <strong
+        >À l'heure actuelle, nous recherchons activement des retours d'utilisateur·ices du service,
+        qu'ils soient positifs ou négatifs.</strong
+      >
     </p>
     <p>
-      Si vous souhaitez nous transmettre vos retours, poser une question, signaler une anomalie, suggérer une amélioration,
-      participer ou suivre le développement, vous pouvez :
+      Si vous souhaitez nous transmettre vos retours, poser une question, signaler une anomalie,
+      suggérer une amélioration, participer ou suivre le développement, vous pouvez :
     </p>
     <ul>
       <li>Écrire un mail à <a href="mailto:contact@administrans.fr">contact@administrans.fr</a></li>

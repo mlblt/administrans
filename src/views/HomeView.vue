@@ -10,7 +10,9 @@ import { RouterLink } from 'vue-router'
   <section class="width--narrow my-4">
     <div class="grid--row">
       <div class="grid--column">
-        <strong>Je veux demander un changement de prénom et/ou de mention de sexe à l'état civil</strong>
+        <strong
+          >Je veux demander un changement de prénom et/ou de mention de sexe à l'état civil</strong
+        >
         <p>Cette étape vous permet de faire reconnaître le changement officiellement.</p>
         <RouterLink class="my-2 button" to="/cec">Commencer</RouterLink>
       </div>

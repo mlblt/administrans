@@ -1,0 +1,2 @@
+# éviter que ESLint tente de parser les fichiers JSON du dossier src
+src/**/*.json

@@ -2,7 +2,7 @@
 import { reactive, watch, ref, inject } from 'vue'
 import DynamicForm from './DynamicForm.vue'
 import { useGlobalStore } from '@/store'
-import {renderMarkdown} from '@/utils'
+import { renderMarkdown } from '@/utils'
 import { useRoute } from 'vue-router'
 import documentsComponents from '@/documentsComponents'
 
@@ -20,7 +20,9 @@ const props = defineProps({
   prefillData: {
     type: Object,
     required: false,
-    default: () => {return {}}
+    default: () => {
+      return {}
+    }
   }
 })
 const formFields = {}
@@ -35,12 +37,10 @@ props.template.structure.forEach((f) => {
       if ('checkbox' == f.type) {
         if (['false', '0', ''].includes(props.prefillData[f.id])) v = false
         else v = true
-      }
-      else {
+      } else {
         v = props.prefillData[f.id]
       }
-    }
-    else if (store.formData[f.id] != undefined) {
+    } else if (store.formData[f.id] != undefined) {
       v = store.formData[f.id]
     } else if (f.default != undefined) {
       v = f.default()
@@ -53,7 +53,7 @@ props.template.structure.forEach((f) => {
     withActions.push(f)
   }
 })
-withActions.forEach(f => {
+withActions.forEach((f) => {
   f.action(formFields)
 })
 const localData = reactive(formFields)
@@ -79,7 +79,7 @@ watch(
   manualEdit,
   (v) => {
     if (v) {
-      plausible.trackEvent('edit', { props: { document: props.template.id } }, {url: route.path})
+      plausible.trackEvent('edit', { props: { document: props.template.id } }, { url: route.path })
     }
   },
   { deep: true }
@@ -88,7 +88,7 @@ function updateLocalData(v) {
   Object.assign(localData, v)
 }
 function downloadPdf() {
-  plausible.trackEvent('print', { props: { document: props.template.id } }, {url: route.path})
+  plausible.trackEvent('print', { props: { document: props.template.id } }, { url: route.path })
   window.print()
 }
 async function shareUrl() {
@@ -96,7 +96,7 @@ async function shareUrl() {
   const params = new URLSearchParams()
   for (const key in localData) {
     if (Object.hasOwnProperty.call(localData, key)) {
-      const element = localData[key];
+      const element = localData[key]
       if (element != undefined) {
         params.set(key, element)
       }
@@ -104,10 +104,10 @@ async function shareUrl() {
   }
   url = url + '?' + params.toString()
   await window.navigator.clipboard.writeText(url)
-  plausible.trackEvent('share', { props: { document: props.template.id } }, {url: route.path})
-  alert(`Un lien de partage a été copié dans le presse-papier. Il contient toutes les informations du document, ne le partagez qu'avec des personnes de confiance`)
-
-  
+  plausible.trackEvent('share', { props: { document: props.template.id } }, { url: route.path })
+  alert(
+    `Un lien de partage a été copié dans le presse-papier. Il contient toutes les informations du document, ne le partagez qu'avec des personnes de confiance`
+  )
 }
 
 function deleteData() {
@@ -128,7 +128,6 @@ function deleteData() {
 }
 
 const componentTemplate = documentsComponents[props.template.id]
-
 </script>
 
 <template>
@@ -136,18 +135,16 @@ const componentTemplate = documentsComponents[props.template.id]
     <div class="grid--row">
       <div class="grid--column hide-for-print">
         <h1>{{ template.name }}</h1>
-        <div 
+        <div
           v-if="template.description"
           class="text--small"
-          v-html="renderMarkdown(template.description)"></div>
-        <div 
-          v-if="template.help"
-          class="text--small"
-          v-html="renderMarkdown(template.help)"></div>
+          v-html="renderMarkdown(template.description)"
+        ></div>
+        <div v-if="template.help" class="text--small" v-html="renderMarkdown(template.help)"></div>
         <p class="text--small">Remplissez le formulaire ci-dessous pour obtenir votre document.</p>
         <DynamicForm
           :key="formKey"
-          :class="{'position--sticky': template.stickyForm}"
+          :class="{ 'position--sticky': template.stickyForm }"
           :modelValue="localData"
           :disabled="manualEdit"
           :structure="template.structure"
@@ -168,7 +165,13 @@ const componentTemplate = documentsComponents[props.template.id]
           <button class="my-2 mx-2 inverted" @click.prevent="shareUrl">
             Partager le document…
           </button>
-          <button class="my-2 inverted" @click.prevent="deleteData();formKey = formKey + 1">
+          <button
+            class="my-2 inverted"
+            @click.prevent="
+              deleteData();
+              formKey++;
+            "
+          >
             Effacer les données…
           </button>
         </DynamicForm>

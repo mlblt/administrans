@@ -16,11 +16,10 @@ const props = defineProps({
 const store = useGlobalStore()
 const value = ref(store.steps[props.stepId])
 
-
 watch(value, (v) => {
   store.setStep(props.stepId, v)
   if (v) {
-    plausible.trackEvent('checkItem', { props: { step: props.stepId } }, {url: route.path})
+    plausible.trackEvent('checkItem', { props: { step: props.stepId } }, { url: route.path })
   }
 })
 </script>
