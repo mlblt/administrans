@@ -22,8 +22,8 @@ function migrateData() {
   data = window.decodeURI(data)
   try {
     data = JSON.parse(data)
-  } catch (e) {
-    console.log("Coulnd't parse as JSON:", data)
+  } catch (error) {
+    console.log("Couldn't parse as JSON:", error)
     return
   }
   console.log('Migration triggered : Importing data', data)
