@@ -21,8 +21,8 @@
     "pinia": "^2.0.32",
     "pinia-plugin-persistedstate": "^3.1.0",
     "plausible-tracker": "^0.3.8",
-    "vite-ssg": "^0.22.2",
-    "vue": "^3.2.47",
+    "vite-ssg": "^28.2.2",
+    "vue": "^3.5.22",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
@@ -36,8 +36,8 @@
     "globals": "^16.4.0",
     "jsdom": "^21.1.0",
     "prettier": "3.6.2",
-    "vite": "^4.1.4",
-    "vitest": "^0.29.1",
+    "vite": "^7.1.12",
+    "vitest": "^4.0.2",
     "vue-eslint-parser": "^10.2.0"
   },
   "volta": {
