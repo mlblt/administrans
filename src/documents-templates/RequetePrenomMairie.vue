@@ -136,9 +136,11 @@ const { renderValue, renderDate } = useDocumentTemplate(p)
         </div>
         <table class="my-2">
           <thead>
-            <th>Date et lieu de la demande</th>
-            <th>Autorité saisie</th>
-            <th>Décision</th>
+            <tr>
+              <th>Date et lieu de la demande</th>
+              <th>Autorité saisie</th>
+              <th>Décision</th>
+            </tr>
           </thead>
           <tbody>
             <tr v-for="(row, idx) in textToArrays(data.demandes, ',', 3)" :key="idx">

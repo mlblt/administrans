@@ -32,5 +32,3 @@ export const createApp = ViteSSG(App, routerConfig, async ({ app }) => {
     })
   }
 })
-
-// app.mount('#app')
