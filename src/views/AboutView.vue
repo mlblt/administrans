@@ -80,7 +80,7 @@ function deleteData() {
   <section class="width--xnarrow my-2" id="contact">
     <h2>Nous contacter / Contribuer à Administrans</h2>
     <p>
-      Administrans est développé par l'associations <a href="https://toutesdesfemmes.fr">Toutes des Femmes</a>, toutes contribution y est la bienvenue.
+      Administrans est développé par l'association <a href="https://toutesdesfemmes.fr">Toutes des Femmes</a>, toutes contribution y est la bienvenue.
       Nous faisons de notre mieux, mais il n'est pas impossible qu'il existe des bugs ou qu'il manque des fonctionnalités
       qui vous paraissent importantes.
     </p>
