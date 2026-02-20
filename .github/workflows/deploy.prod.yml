@@ -23,7 +23,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22.12.0'
+          # eslint@10 requires Node >= 22.13.0 (or 20.19.x); use 22.13.0 to satisfy both
+          node-version: '22.13.0'
           cache: 'yarn'
 
       - name: Install dependencies
