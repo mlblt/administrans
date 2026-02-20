@@ -128,6 +128,11 @@ function deleteData() {
 }
 
 const componentTemplate = documentsComponents[props.template.id]
+
+function deleteDataAndAddFormKey() {
+  deleteData()
+  formKey.value++
+}
 </script>
 
 <template>
@@ -165,13 +170,7 @@ const componentTemplate = documentsComponents[props.template.id]
           <button class="my-2 mx-2 inverted" @click.prevent="shareUrl">
             Partager le document…
           </button>
-          <button
-            class="my-2 inverted"
-            @click.prevent="
-              deleteData()
-              formKey++
-            "
-          >
+          <button class="my-2 inverted" @click.prevent="deleteDataAndAddFormKey">
             Effacer les données…
           </button>
         </DynamicForm>
