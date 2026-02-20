@@ -31,14 +31,14 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "10.2.0",
     "@vue/test-utils": "^2.3.0",
-    "eslint": "^9.38.0",
-    "eslint-plugin-vue": "^10.5.1",
-    "globals": "^16.4.0",
+    "eslint": "^10.0.1",
+    "eslint-plugin-vue": "^10.8.0",
+    "globals": "^17.3.0",
     "jsdom": "^21.1.0",
     "prettier": "3.6.2",
     "vite": "^7.1.12",
     "vitest": "^4.0.2",
-    "vue-eslint-parser": "^10.2.0"
+    "vue-eslint-parser": "^10.4.0"
   },
   "volta": {
     "node": "22.12.0",

@@ -75,9 +75,14 @@ function deleteData() {
       l'édition successive de plusieurs documents. Si vous souhaitez supprimer cette copie locale,
       cliquez simplement sur le bouton ci-dessous :
     </p>
-    <button @click.prevent="deleteData">Supprimer mes données…</button>
+    <button @click.prevent="deleteData">
+      Supprimer mes données…
+    </button>
   </section>
-  <section class="width--xnarrow my-2" id="contact">
+  <section
+    id="contact"
+    class="width--xnarrow my-2"
+  >
     <h2>Nous contacter / Contribuer à Administrans</h2>
     <p>
       Administrans est développé par l'association <a href="https://toutesdesfemmes.fr">Toutes des Femmes</a>, toutes contribution y est la bienvenue.
@@ -85,10 +90,8 @@ function deleteData() {
       qui vous paraissent importantes.
     </p>
     <p>
-      <strong
-        >À l'heure actuelle, nous recherchons activement des retours d'utilisateur·ices du service,
-        qu'ils soient positifs ou négatifs.</strong
-      >
+      <strong>À l'heure actuelle, nous recherchons activement des retours d'utilisateur·ices du service,
+        qu'ils soient positifs ou négatifs.</strong>
     </p>
     <p>
       Si vous souhaitez nous transmettre vos retours, poser une question, signaler une anomalie,
@@ -102,7 +105,10 @@ function deleteData() {
     </ul>
     <p>Merci beaucoup et prenez soin de vous &lt;3</p>
   </section>
-  <section class="width--xnarrow my-2" v-if="plausibleEnabled">
+  <section
+    v-if="plausibleEnabled"
+    class="width--xnarrow my-2"
+  >
     <h2>Analytique</h2>
     <p>
       Pour avoir une idée de l'utilisation du site et des aspects à améliorer ou retravailler, des

@@ -1,8 +1,8 @@
 <script setup>
 import useDocumentTemplate from '@/templates'
-import { renderMarkdown } from '@/utils'
+import MarkdownRenderer from '@/components/MarkdownRenderer.vue'
 
-const p = defineProps({ data: { type: Object }, structure: { type: Array } })
+const p = defineProps({ data: { type: Object, default: () => ({}) }, structure: { type: Array, default: () => [] } })
 const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentTemplate(p)
 </script>
 
@@ -10,47 +10,51 @@ const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentT
   <div class="requete">
     <p class="text--right">
       À Mesdames et Messieurs les Président et Juges
-      <br />
+      <br>
       de la Chambre du Conseil du
       {{ renderValue('tribunal') }}
     </p>
-    <p class="text--right">{{ renderValue('adresseTribunal') }}</p>
+    <p class="text--right">
+      {{ renderValue('adresseTribunal') }}
+    </p>
     <h1 v-if="data.typeChangement === 'genre'">
       Requête en changement de la mention du sexe à l'état civil
     </h1>
-    <h1 v-else>Requête en changement de la mention du sexe et des prénoms à l'état civil</h1>
+    <h1 v-else>
+      Requête en changement de la mention du sexe et des prénoms à l'état civil
+    </h1>
     <p>
-      Devant la Chambre du Conseil <br />
-      (article 1055-8 du Code de procédure civile)<br />
-      (article 1055-7 CpC : « Le ministère d’avocat n’est pas obligatoire »)<br />
+      Devant la Chambre du Conseil <br>
+      (article 1055-8 du Code de procédure civile)<br>
+      (article 1055-7 CpC : « Le ministère d’avocat n’est pas obligatoire »)<br>
     </p>
-    <hr />
+    <hr>
     <p>
       <strong> À la demande de : </strong>
-      <br />
+      <br>
       {{ genderSwitch('Madame', 'Monsieur', 'genre') }}
       {{ renderValue('nom').toUpperCase() }} {{ renderValue('prénomsActuels') }}
       {{ renderWithGender('dit') }}
       {{ genderSwitch('Monsieur', 'Madame', 'genre') }}
       {{ renderValue('nom').toUpperCase() }}
       {{ renderValue('nouveauxPrénoms', data.prénomsActuels) }}
-      <br />
+      <br>
       {{ renderWithGender('Né') }} le {{ renderDate('dateNaissance') }} à
       {{ renderValue('lieuNaissance') }}, de nationalité {{ renderValue('nationalité') }}
-      <br />
+      <br>
       {{ renderValue('situationProfessionnelle') }}
-      <br />
+      <br>
       {{ renderValue('situationFamiliale') }}
-      <br />
+      <br>
       Résidant au {{ renderValue('adresse') }}
-      <br />
+      <br>
       {{ renderValue('téléphone') }}, {{ renderValue('email') }}
-      <br />
+      <br>
       Sans avocat, présentant sa requête en personne.
     </p>
     <p>
       <strong> En présence de : </strong>
-      <br />
+      <br>
       Madame la Procureure ou Monsieur le Procureur de la République Près le Tribunal Judiciaire de
       {{ renderValue('villeTribunal') }}.
     </p>
@@ -61,10 +65,12 @@ const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentT
       </strong>
     </p>
     <h2>Les faits</h2>
-    <div v-html="renderMarkdown(renderValue('contexte'))"></div>
+    <MarkdownRenderer :source="renderValue('contexte')" />
     <h2>
       Discussion sur la demande de rectification de la mention de sexe
-      <template v-if="data.typeChangement === 'prénomEtGenre'"> et de prénom(s)</template>
+      <template v-if="data.typeChangement === 'prénomEtGenre'">
+        et de prénom(s)
+      </template>
       à l'état civil
     </h2>
     <p>
@@ -129,10 +135,8 @@ const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentT
         soutien de sa demande.
       </p>
       <p>
-        <strong
-          >Le fait de ne pas avoir subi des traitements médicaux, une opération chirurgicale ou une
-          stérilisation ne peut motiver le refus de faire droit à la demande.</strong
-        >
+        <strong>Le fait de ne pas avoir subi des traitements médicaux, une opération chirurgicale ou une
+          stérilisation ne peut motiver le refus de faire droit à la demande.</strong>
       </p>
       <p>
         Le tribunal constate que le demandeur satisfait aux conditions fixées à l'article 61-5 et
@@ -145,10 +149,8 @@ const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentT
       <p>
         « Mention de la décision de modification du sexe et, le cas échéant, des prénoms est portée
         en marge de l'acte de naissance de l'intéressé,
-        <strong
-          >à la requête du procureur de la République, dans les quinze jours suivant la date à
-          laquelle cette décision est passée en force de chose jugée.</strong
-        >
+        <strong>à la requête du procureur de la République, dans les quinze jours suivant la date à
+          laquelle cette décision est passée en force de chose jugée.</strong>
       </p>
       <p>
         Par dérogation à l'article 61-4, les modifications de prénoms corrélatives à une décision de
@@ -167,23 +169,17 @@ const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentT
     </blockquote>
 
     <p>
-      <strong
-        >Ce faisant le changement de sexe à l’état civil est totalement démédicalisé et se fonde
+      <strong>Ce faisant le changement de sexe à l’état civil est totalement démédicalisé et se fonde
         désormais uniquement sur la détermination sociale de son sexe par la personne et sa
-        reconnaissance par son entourage.</strong
-      >
+        reconnaissance par son entourage.</strong>
     </p>
     <p>
-      <strong
-        >Le législateur a en outre pris la peine d’indiquer directement dans la loi que :</strong
-      >
+      <strong>Le législateur a en outre pris la peine d’indiquer directement dans la loi que :</strong>
     </p>
     <blockquote>
       <p>
-        <strong
-          >« Le fait de ne pas avoir subi des traitements médicaux, une opération chirurgicale ou
-          une stérilisation ne peut motiver le refus de faire droit à la demande. »</strong
-        >
+        <strong>« Le fait de ne pas avoir subi des traitements médicaux, une opération chirurgicale ou
+          une stérilisation ne peut motiver le refus de faire droit à la demande. »</strong>
       </p>
     </blockquote>
     <p>
@@ -213,11 +209,9 @@ const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentT
         <strong>établi le caractère irréversible de la transformation de leur apparence</strong>,
         c'est-à-dire démontré avoir subi une opération stérilisante ou un traitement médical
         entraînant une très forte probabilité de stérilité,
-        <strong
-          >s’analyse en un manquement par l’Etat défendeur à son obligation positive de garantir le
+        <strong>s’analyse en un manquement par l’Etat défendeur à son obligation positive de garantir le
           droit de ces derniers au respect de leur vie privée. Il y a donc, de ce chef, violation de
-          l’article 8 de la Convention à leur égard.</strong
-        >
+          l’article 8 de la Convention à leur égard.</strong>
         »
       </p>
     </blockquote>
@@ -324,8 +318,8 @@ const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentT
     <ul>
       <li v-if="data.typeChangement === 'prénomEtGenre'">
         <strong>ORDONNER</strong>
-        que l’acte de naissance<template v-if="(data['actesÀMettreÀJour'] || '').trim().length > 0"
-          >,
+        que l’acte de naissance<template v-if="(data['actesÀMettreÀJour'] || '').trim().length > 0">
+          ,
           {{
             (data['actesÀMettreÀJour'] || '')
               .trim()
@@ -342,8 +336,8 @@ const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentT
       </li>
       <li>
         <strong>ORDONNER</strong>
-        que l’acte de naissance<template v-if="(data['actesÀMettreÀJour'] || '').trim().length > 0"
-          >,
+        que l’acte de naissance<template v-if="(data['actesÀMettreÀJour'] || '').trim().length > 0">
+          ,
           {{
             (data['actesÀMettreÀJour'] || '')
               .trim()
@@ -380,18 +374,23 @@ const { renderValue, genderSwitch, renderWithGender, renderDate } = useDocumentT
       {{ renderValue('nom').toUpperCase() }}
       {{ renderValue('nouveauxPrénoms', data.prénomsActuels) }}
     </p>
-    <hr class="hidden" />
-    <hr class="hidden" />
-    <hr class="hidden" />
-    <hr class="hidden" />
-    <hr class="hidden" />
-    <hr class="hidden" />
-    <hr class="hidden" />
-    <hr class="hidden" />
+    <hr class="hidden">
+    <hr class="hidden">
+    <hr class="hidden">
+    <hr class="hidden">
+    <hr class="hidden">
+    <hr class="hidden">
+    <hr class="hidden">
+    <hr class="hidden">
     <h2>Bordereau de pièces</h2>
     <ol class="list--piece">
       <template v-for="e in (data['justificatifsRequête'] || '').split('\n')">
-        <li v-if="e.trim().length > 0" :key="JSON.stringify(e, null, 2)">{{ e.trim() }}</li>
+        <li
+          v-if="e.trim().length > 0"
+          :key="JSON.stringify(e, null, 2)"
+        >
+          {{ e.trim() }}
+        </li>
       </template>
     </ol>
   </div>

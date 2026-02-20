@@ -28,10 +28,8 @@ function foreignResidenceSwitch(foreign, local) {
           pas.
         </p>
         <p>
-          <strong
-            >Le terme état civil désigne ici les informations vous concernant officiellement
-            garanties par l'état.</strong
-          >
+          <strong>Le terme état civil désigne ici les informations vous concernant officiellement
+            garanties par l'état.</strong>
           Il s'agit notamment de votre prénom, nom, date et lieu de naissance, filiation. Elles
           peuvent apparaître dans votre acte de naissance, livret de famille, Carte Nationale
           d'Identité, ou tout autre document similaire produit par l'état.
@@ -49,8 +47,7 @@ function foreignResidenceSwitch(foreign, local) {
         </p>
         <p>
           <a href="https://www.service-public.fr/particuliers/vosdroits/N31778">
-            Service-public.fr</a
-          >
+            Service-public.fr</a>
           fournit une page très complète pour expliquer où et comment faire la démarche en fonction
           de votre situation. Nous utilisons cette page comme source par la suite.
         </p>
@@ -71,10 +68,8 @@ function foreignResidenceSwitch(foreign, local) {
         </p>
         <p>
           Compte tenu des lois discriminatoires à l'égard des personnes trans en France,
-          <strong
-            >le changement de mention de sexe à l'état civil peut bloquer votre accès à la PMA, à la
-            conservation de vos gamètes et à l'accès à vos gamètes déjà prélevés</strong
-          >
+          <strong>le changement de mention de sexe à l'état civil peut bloquer votre accès à la PMA, à la
+            conservation de vos gamètes et à l'accès à vos gamètes déjà prélevés</strong>
           avant un changement d'état civil. Il peut être nécessaire d'en tenir compte avant
           d'entamer un changement de mention de sexe si vous êtes concerné·e.
         </p>
@@ -83,9 +78,7 @@ function foreignResidenceSwitch(foreign, local) {
         <h2>Comment faire ?</h2>
         <p>En France, il existe deux manières de procéder pour changer d'état civil.</p>
         <p>
-          <strong
-            >Quelle que soit la méthode que vous choisissez, le résultat final est le même.</strong
-          >
+          <strong>Quelle que soit la méthode que vous choisissez, le résultat final est le même.</strong>
           La ou les décisions vont faire modifier votre acte de naissance, et vous permettre
           d'utiliser votre nouvel état civil. Certaines personnes préfèrent la première méthode pour
           tout faire en une fois, d'autres la seconde pour pouvoir avancer plus rapidement sur leur
@@ -94,8 +87,8 @@ function foreignResidenceSwitch(foreign, local) {
         <p>
           Indiquer votre situation :
           <select
-            name="situation"
             id="situation"
+            name="situation"
             :value="store.situation"
             @input="store.setSituation($event.target.value)"
           >
@@ -105,7 +98,9 @@ function foreignResidenceSwitch(foreign, local) {
             <option value="françaisRésidantÀLétranger">
               Vous êtes français·e et résidez à l'étranger
             </option>
-            <option value="françaisNéÀLétranger">Vous êtes français·e né·e à l'étranger</option>
+            <option value="françaisNéÀLétranger">
+              Vous êtes français·e né·e à l'étranger
+            </option>
             <option value="réfugié">
               Vous êtes réfugié·e, apatride ou bénéficiaire de la protection subsidiaire (Ofpra)
             </option>
@@ -194,16 +189,20 @@ function foreignResidenceSwitch(foreign, local) {
         <p>
           Commencez par choisir votre parcours :
           <select
-            name="method"
             id="method"
+            name="method"
             :value="store.CecMethod"
             @input="store.setCecMethod($event.target.value)"
           >
-            <option value="prénomEtSexe">Prénom et mention de sexe en une fois</option>
-            <option value="prénomPuisSexe">Prénom et mention de sexe indépendamment</option>
+            <option value="prénomEtSexe">
+              Prénom et mention de sexe en une fois
+            </option>
+            <option value="prénomPuisSexe">
+              Prénom et mention de sexe indépendamment
+            </option>
           </select>
         </p>
-        <StepDetails stepId="chooseNames">
+        <StepDetails step-id="chooseNames">
           <h3>Choisir vos prénoms</h3>
           <p>
             Il s'agit d'un choix très personnel, évidemment, mais voici quelques informations qui
@@ -228,14 +227,14 @@ function foreignResidenceSwitch(foreign, local) {
           </p>
           <label for="prenoms"> Nouveau(x) prénom(s), séparés par une virgule </label>
           <input
+            id="prenoms"
             type="text"
             name="prenoms"
-            id="prenoms"
             :value="store.formData.prénom"
             @input="store.persistFormData({ prénom: $event.target.value })"
-          />
+          >
         </StepDetails>
-        <StepDetails stepId="requestBirthCertificates">
+        <StepDetails step-id="requestBirthCertificates">
           <h3>Demander des copies intégrales de votre acte de naissance</h3>
           <p>
             Ces copies vont permettre de justifier de votre identité et sont indispensables pour la
@@ -243,9 +242,10 @@ function foreignResidenceSwitch(foreign, local) {
           </p>
           <p>
             Elles sont à demander à votre commune de naissance, consultez pour cela
-            <a href="https://www.service-public.fr/particuliers/vosdroits/F1427" target="_blank"
-              >service-public.fr</a
-            >
+            <a
+              href="https://www.service-public.fr/particuliers/vosdroits/F1427"
+              target="_blank"
+            >service-public.fr</a>
             qui vous indiquera précisément la marche à suivre.
           </p>
           <p>
@@ -254,16 +254,17 @@ function foreignResidenceSwitch(foreign, local) {
             envoyer les documents. Prenez au moins 3 copies, ce n'est jamais perdu.
           </p>
         </StepDetails>
-        <StepDetails stepId="prepareProofs">
+        <StepDetails step-id="prepareProofs">
           <h3>Rassembler vos justificatifs</h3>
           <p>Certains justificatifs sont incontournables pour que votre demande puisse aboutir :</p>
           <ul>
             <li>Une copie intégrale de votre acte de naissance</li>
             <li>Une photocopie recto-verso de votre carte d'identité ou passeport</li>
             <li>
-              <a href="https://www.service-public.fr/particuliers/vosdroits/F1028" target="_blank"
-                >Un justificatif de domicile récent</a
-              >
+              <a
+                href="https://www.service-public.fr/particuliers/vosdroits/F1028"
+                target="_blank"
+              >Un justificatif de domicile récent</a>
             </li>
           </ul>
           <p>
@@ -275,8 +276,11 @@ function foreignResidenceSwitch(foreign, local) {
               Des attestations de vos proches, ami·es, collègues, famille… Avec chaque attestation,
               vous devez transmettre une copie recto-verso de la CNI ou du passeport de la personne
               qui l'a rédigée.
-              <br />
-              <RouterLink to="/documents/attestation-temoignage" class="button my-2">
+              <br>
+              <RouterLink
+                to="/documents/attestation-temoignage"
+                class="button my-2"
+              >
                 Générer vos attestations
               </RouterLink>
             </li>
@@ -315,7 +319,10 @@ function foreignResidenceSwitch(foreign, local) {
             de réponse et la façon dont les demandes sont traitées.
           </p>
         </StepDetails>
-        <StepDetails stepId="prepareRequest" v-if="store.CecMethod === 'prénomEtSexe'">
+        <StepDetails
+          v-if="store.CecMethod === 'prénomEtSexe'"
+          step-id="prepareRequest"
+        >
           <h3>Préparer votre demande</h3>
           <p>
             Vous allez maintenant produire le document de demande de changement de prénom et de
@@ -332,8 +339,7 @@ function foreignResidenceSwitch(foreign, local) {
               <a
                 href="https://lannuaire.service-public.fr/pays-de-la-loire/loire-atlantique/59edbec7-feb1-49aa-bb94-5f6c316b9093"
               >
-                au Tribunal de Nantes</a
-              >
+                au Tribunal de Nantes</a>
               car vous êtes né·e à l'étranger.
             </template>
             <template v-else-if="store.situation === 'françaisRésidantEnFrance'">
@@ -346,11 +352,17 @@ function foreignResidenceSwitch(foreign, local) {
               d'un organisme ou d'un avocat.
             </template>
           </p>
-          <RouterLink to="/documents/requete-changement-etat-civil-tribunal" class="button my-2">
+          <RouterLink
+            to="/documents/requete-changement-etat-civil-tribunal"
+            class="button my-2"
+          >
             Générer votre demande de changement de prénom et de mention de sexe
           </RouterLink>
         </StepDetails>
-        <StepDetails stepId="prepareRequestName" v-if="store.CecMethod === 'prénomPuisSexe'">
+        <StepDetails
+          v-if="store.CecMethod === 'prénomPuisSexe'"
+          step-id="prepareRequestName"
+        >
           <h3>Préparer votre demande de changement de prénom</h3>
           <p>
             Vous allez maintenant produire le document de demande de changement de prénom, à
@@ -362,14 +374,22 @@ function foreignResidenceSwitch(foreign, local) {
                 à l'ambassade ou poste consulaire compétent.
               </a>
             </template>
-            <template v-else> au service d'état civil de votre commune de résidence. </template>
+            <template v-else>
+              au service d'état civil de votre commune de résidence.
+            </template>
           </p>
 
-          <RouterLink to="/documents/changement-prenom-mairie" class="button my-2">
+          <RouterLink
+            to="/documents/changement-prenom-mairie"
+            class="button my-2"
+          >
             Générer votre demande de changement de prénom
           </RouterLink>
         </StepDetails>
-        <StepDetails stepId="prepareRequestCourt" v-if="store.CecMethod === 'prénomPuisSexe'">
+        <StepDetails
+          v-if="store.CecMethod === 'prénomPuisSexe'"
+          step-id="prepareRequestCourt"
+        >
           <h3>Préparer votre demande de changement de mention de sexe</h3>
           <p>
             Une fois que votre demande de changement de prénom aura abouti et que vous aurez reçu la
@@ -380,12 +400,15 @@ function foreignResidenceSwitch(foreign, local) {
             Pour cette seconde demande, pensez à joindre à votre dossier la décision de changement
             dé prénom fournie par le service d'état civil.
           </p>
-          <RouterLink to="/documents/requete-changement-etat-civil-tribunal" class="button my-2">
+          <RouterLink
+            to="/documents/requete-changement-etat-civil-tribunal"
+            class="button my-2"
+          >
             Générer votre demande de changement de mention de sexe
           </RouterLink>
         </StepDetails>
 
-        <StepDetails stepId="submitRequest">
+        <StepDetails step-id="submitRequest">
           <h3>Déposer votre demande</h3>
           <p>Pour déposer votre demande, deux choix s'offrent à vous :</p>
           <ul>
@@ -409,7 +432,7 @@ function foreignResidenceSwitch(foreign, local) {
             vous permettra d'avoir une meilleure idée du temps que vous devrez patienter.
           </p>
         </StepDetails>
-        <StepDetails stepId="wait">
+        <StepDetails step-id="wait">
           <h3>Attendre le résultat de la procédure</h3>
           <p>Votre demande est déposée, maintenant vous n'avez plus qu'à attendre.</p>
           <p>
@@ -442,7 +465,7 @@ function foreignResidenceSwitch(foreign, local) {
             déjà été rendue.
           </p>
         </StepDetails>
-        <StepDetails stepId="notification">
+        <StepDetails step-id="notification">
           <h3>Recevoir la notification de décision</h3>
           <p>
             Une fois votre demande validée,
@@ -450,10 +473,8 @@ function foreignResidenceSwitch(foreign, local) {
             enverront systématiquement un courrier.
           </p>
           <p>
-            <strong
-              >Ce courrier contient la décision ou le jugement et doit être conservé précieusement,
-              photocopié et/ou scanné</strong
-            >. Il peut notamment vous servir à attester de votre identité en attendant d'avoir
+            <strong>Ce courrier contient la décision ou le jugement et doit être conservé précieusement,
+              photocopié et/ou scanné</strong>. Il peut notamment vous servir à attester de votre identité en attendant d'avoir
             refait vos papiers, ou à justifier de vos changements d'état civil pour d'autres
             démarches.
           </p>
@@ -483,9 +504,10 @@ function foreignResidenceSwitch(foreign, local) {
           <p>
             Parfois, l'INSEE ne fait pas automatiquement les étapes trois et quatre. Dans ce cas là,
             il faut
-            <a href="https://www.service-public.fr/particuliers/vosdroits/R49454" target="blank"
-              >les contacter via un formulaire dédié</a
-            >.
+            <a
+              href="https://www.service-public.fr/particuliers/vosdroits/R49454"
+              target="blank"
+            >les contacter via un formulaire dédié</a>.
           </p>
           <p><strong>Sécurité sociale</strong></p>
           <p>
@@ -506,11 +528,10 @@ function foreignResidenceSwitch(foreign, local) {
           </ul>
           <p>
             <a href="https://wikitrans.co/2019/12/16/changement-de-numero-de-securite-sociale/">
-              Wikitrans propose un article très complet sur cette question </a
-            >, vous y trouverez certainement les réponses que vous cherchez.
+              Wikitrans propose un article très complet sur cette question </a>, vous y trouverez certainement les réponses que vous cherchez.
           </p>
         </StepDetails>
-        <StepDetails stepId="party">
+        <StepDetails step-id="party">
           <h3>🎉 Célébrer 🎉</h3>
           <p>De tout cœur, bravo !</p>
           <p>
@@ -522,18 +543,29 @@ function foreignResidenceSwitch(foreign, local) {
             vous avez trouvé Administrans utile, ou si vous souhaitez nous suggérer des
             améliorations !
           </p>
-          <RouterLink to="/a-propos#contact" class="button inverted"> Nous écrire </RouterLink>
+          <RouterLink
+            to="/a-propos#contact"
+            class="button inverted"
+          >
+            Nous écrire
+          </RouterLink>
         </StepDetails>
       </section>
     </div>
     <div class="grid--column one-third">
-      <aside class="position--sticky my-4" id="checklist">
+      <aside
+        id="checklist"
+        class="position--sticky my-4"
+      >
         <h2>Checklist</h2>
-        <StepItem stepId="setSituation" :link="false">
+        <StepItem
+          step-id="setSituation"
+          :link="false"
+        >
           Indiquer votre situation :
           <select
-            name="situation"
             id="situation"
+            name="situation"
             :value="store.situation"
             @input="store.setSituation($event.target.value)"
           >
@@ -543,125 +575,264 @@ function foreignResidenceSwitch(foreign, local) {
             <option value="françaisRésidantÀLétranger">
               Vous êtes français·e et résidez à l'étranger
             </option>
-            <option value="françaisNéÀLétranger">Vous êtes français·e né·e à l'étranger</option>
+            <option value="françaisNéÀLétranger">
+              Vous êtes français·e né·e à l'étranger
+            </option>
             <option value="réfugié">
               Vous êtes réfugié·e, apatride ou bénéficiaire de la protection subsidiaire (Ofpra)
             </option>
           </select>
         </StepItem>
-        <StepItem stepId="chooseCecMethod" :link="false">
+        <StepItem
+          step-id="chooseCecMethod"
+          :link="false"
+        >
           Choisir votre parcours :
           <select
-            name="method"
             id="method"
+            name="method"
             :value="store.CecMethod"
             @input="store.setCecMethod($event.target.value)"
           >
-            <option value="prénomEtSexe">Prénom et mention de sexe en une fois</option>
-            <option value="prénomPuisSexe">Prénom et mention de sexe indépendamment</option>
+            <option value="prénomEtSexe">
+              Prénom et mention de sexe en une fois
+            </option>
+            <option value="prénomPuisSexe">
+              Prénom et mention de sexe indépendamment
+            </option>
           </select>
         </StepItem>
-        <StepItem stepId="chooseNames" :link="true">
+        <StepItem
+          step-id="chooseNames"
+          :link="true"
+        >
           <span id="prenoms-checklist-label">Choisir vos prénoms</span>
           <template #after-link>
             <input
+              id="prenoms-checklist"
               aria-labelledby="prenoms-checklist-label"
               type="text"
               name="prenoms-checklist"
-              id="prenoms-checklist"
               placeholder="Ex. : Prénom1, Prénom 2"
               :value="store.formData.prénom"
               @input="store.persistFormData({ prénom: $event.target.value })"
-            />
+            >
           </template>
         </StepItem>
-        <StepItem stepId="requestBirthCertificates">
+        <StepItem step-id="requestBirthCertificates">
           Demander des copies intégrales de votre acte de naissance
         </StepItem>
         <template v-if="store.CecMethod === 'prénomEtSexe'">
-          <StepItem stepId="prepareProofs"> Rassembler vos justificatifs </StepItem>
-          <StepItem stepId="prepareProofsBirthCertificate" class="mx-2" :link="false">
-            Copie d'acte de naissance
-          </StepItem>
-          <StepItem stepId="prepareProofsId" class="mx-2" :link="false">
-            Copie de votre CNI ou Passeport
-          </StepItem>
-          <StepItem stepId="prepareProofsHome" class="mx-2" :link="false">
-            Justificatif de domicile
-          </StepItem>
-          <StepItem stepId="prepareProofsSocial" class="mx-2" :link="false">
-            Attestations de proches
-          </StepItem>
-          <StepItem stepId="prepareRequest"> Préparer votre demande </StepItem>
-          <StepItem stepId="submitRequest"> Déposer où envoyer votre demande </StepItem>
-          <StepItem stepId="wait"> Attendre la décision </StepItem>
-          <StepItem stepId="notification"> Recevoir la notification </StepItem>
-          <StepItem stepId="party"> Célébrer </StepItem>
-        </template>
-        <template v-else>
-          <StepItem stepId="submitRequestNames" :link="false">
-            Changement de prénom {{ foreignResidenceSwitch('au poste consulaire', 'à la mairie') }}
-          </StepItem>
-          <StepItem stepId="prepareProofs" class="mx-2"> Rassembler vos justificatifs </StepItem>
-          <StepItem stepId="prepareProofsBirthCertificateNames" class="mx-4" :link="false">
-            Copie d'acte de naissance
-          </StepItem>
-          <StepItem stepId="prepareProofsIdNames" class="mx-4" :link="false">
-            Copie de votre CNI ou Passeport
-          </StepItem>
-          <StepItem stepId="prepareProofsHomeNames" class="mx-4" :link="false">
-            Justificatif de domicile
-          </StepItem>
-          <StepItem stepId="prepareProofsSocialNames" class="mx-4" :link="false">
-            Attestations de proches
-          </StepItem>
-
-          <StepItem stepId="prepareRequestName" class="mx-2"> Préparer votre demande </StepItem>
-
-          <StepItem stepId="submitRequestName" class="mx-2" linkTo="submitRequest">
-            Déposer votre demande
-          </StepItem>
-          <StepItem stepId="waitName" class="mx-2" linkTo="wait"> Attendre la décision </StepItem>
-
-          <StepItem stepId="notificationName" class="mx-2" linkTo="notification">
-            Recevoir la notification
-          </StepItem>
-          <StepItem stepId="party" class="mx-2"> Célébrer </StepItem>
-
-          <StepItem stepId="changeGenderStatement" :link="false">
-            Changement de mention de sexe au tribunal
-          </StepItem>
-          <StepItem stepId="prepareProofsCourt" class="mx-2" linkTo="prepareProofs">
+          <StepItem step-id="prepareProofs">
             Rassembler vos justificatifs
           </StepItem>
-          <StepItem stepId="prepareProofsBirthCertificateCourt" class="mx-4" :link="false">
+          <StepItem
+            step-id="prepareProofsBirthCertificate"
+            class="mx-2"
+            :link="false"
+          >
             Copie d'acte de naissance
           </StepItem>
-          <StepItem stepId="prepareProofsIdCourt" class="mx-4" :link="false">
+          <StepItem
+            step-id="prepareProofsId"
+            class="mx-2"
+            :link="false"
+          >
             Copie de votre CNI ou Passeport
           </StepItem>
-          <StepItem stepId="prepareProofsHomeCourt" class="mx-4" :link="false">
+          <StepItem
+            step-id="prepareProofsHome"
+            class="mx-2"
+            :link="false"
+          >
             Justificatif de domicile
           </StepItem>
-          <StepItem stepId="prepareProofsSocialCourt" class="mx-4" :link="false">
+          <StepItem
+            step-id="prepareProofsSocial"
+            class="mx-2"
+            :link="false"
+          >
             Attestations de proches
           </StepItem>
-          <StepItem stepId="prepareProofsNameCHangeCourt" class="mx-4" :link="false">
+          <StepItem step-id="prepareRequest">
+            Préparer votre demande
+          </StepItem>
+          <StepItem step-id="submitRequest">
+            Déposer où envoyer votre demande
+          </StepItem>
+          <StepItem step-id="wait">
+            Attendre la décision
+          </StepItem>
+          <StepItem step-id="notification">
+            Recevoir la notification
+          </StepItem>
+          <StepItem step-id="party">
+            Célébrer
+          </StepItem>
+        </template>
+        <template v-else>
+          <StepItem
+            step-id="submitRequestNames"
+            :link="false"
+          >
+            Changement de prénom {{ foreignResidenceSwitch('au poste consulaire', 'à la mairie') }}
+          </StepItem>
+          <StepItem
+            step-id="prepareProofs"
+            class="mx-2"
+          >
+            Rassembler vos justificatifs
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsBirthCertificateNames"
+            class="mx-4"
+            :link="false"
+          >
+            Copie d'acte de naissance
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsIdNames"
+            class="mx-4"
+            :link="false"
+          >
+            Copie de votre CNI ou Passeport
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsHomeNames"
+            class="mx-4"
+            :link="false"
+          >
+            Justificatif de domicile
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsSocialNames"
+            class="mx-4"
+            :link="false"
+          >
+            Attestations de proches
+          </StepItem>
+
+          <StepItem
+            step-id="prepareRequestName"
+            class="mx-2"
+          >
+            Préparer votre demande
+          </StepItem>
+
+          <StepItem
+            step-id="submitRequestName"
+            class="mx-2"
+            link-to="submitRequest"
+          >
+            Déposer votre demande
+          </StepItem>
+          <StepItem
+            step-id="waitName"
+            class="mx-2"
+            link-to="wait"
+          >
+            Attendre la décision
+          </StepItem>
+
+          <StepItem
+            step-id="notificationName"
+            class="mx-2"
+            link-to="notification"
+          >
+            Recevoir la notification
+          </StepItem>
+          <StepItem
+            step-id="party"
+            class="mx-2"
+          >
+            Célébrer
+          </StepItem>
+
+          <StepItem
+            step-id="changeGenderStatement"
+            :link="false"
+          >
+            Changement de mention de sexe au tribunal
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsCourt"
+            class="mx-2"
+            link-to="prepareProofs"
+          >
+            Rassembler vos justificatifs
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsBirthCertificateCourt"
+            class="mx-4"
+            :link="false"
+          >
+            Copie d'acte de naissance
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsIdCourt"
+            class="mx-4"
+            :link="false"
+          >
+            Copie de votre CNI ou Passeport
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsHomeCourt"
+            class="mx-4"
+            :link="false"
+          >
+            Justificatif de domicile
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsSocialCourt"
+            class="mx-4"
+            :link="false"
+          >
+            Attestations de proches
+          </StepItem>
+          <StepItem
+            step-id="prepareProofsNameCHangeCourt"
+            class="mx-4"
+            :link="false"
+          >
             Décision de changement de prénom transmise par l'état civil
           </StepItem>
 
-          <StepItem stepId="prepareRequestCourt" class="mx-2"> Préparer votre demande </StepItem>
+          <StepItem
+            step-id="prepareRequestCourt"
+            class="mx-2"
+          >
+            Préparer votre demande
+          </StepItem>
 
-          <StepItem stepId="submitRequestCourt" class="mx-2" linkTo="submitRequest">
+          <StepItem
+            step-id="submitRequestCourt"
+            class="mx-2"
+            link-to="submitRequest"
+          >
             Déposer votre demande
           </StepItem>
 
-          <StepItem stepId="waitCourt" class="mx-2" linkTo="wait"> Attendre la décision </StepItem>
+          <StepItem
+            step-id="waitCourt"
+            class="mx-2"
+            link-to="wait"
+          >
+            Attendre la décision
+          </StepItem>
 
-          <StepItem stepId="notificationCourt" class="mx-2" linkTo="notification">
+          <StepItem
+            step-id="notificationCourt"
+            class="mx-2"
+            link-to="notification"
+          >
             Recevoir la notification
           </StepItem>
-          <StepItem stepId="party" class="mx-2"> Célébrer </StepItem>
+          <StepItem
+            step-id="party"
+            class="mx-2"
+          >
+            Célébrer
+          </StepItem>
         </template>
       </aside>
       <RouterLink

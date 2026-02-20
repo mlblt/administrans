@@ -78,9 +78,17 @@ const steps = [
       </section>
     </div>
     <div class="grid--column one-third">
-      <aside class="position--sticky my-4" id="checklist">
+      <aside
+        id="checklist"
+        class="position--sticky my-4"
+      >
         <h2>Checklist</h2>
-        <StepItem v-for="step in steps" :key="step.id" :stepId="`maj${step.id}`" :link="false">
+        <StepItem
+          v-for="step in steps"
+          :key="step.id"
+          :step-id="`maj${step.id}`"
+          :link="false"
+        >
           <router-link :to="step.linkTo">
             {{ step.label }}
           </router-link>

@@ -8,9 +8,9 @@ const plausible = inject('plausible')
 
 const route = useRoute()
 const props = defineProps({
-  stepId: { required: true },
-  link: { required: false, default: true },
-  linkTo: { required: false, default: '' }
+  stepId: { type: String, required: true },
+  link: { type: Boolean, required: false, default: true },
+  linkTo: { type: [String, Object], required: false, default: '' }
 })
 
 const store = useGlobalStore()
@@ -26,13 +26,20 @@ watch(value, (v) => {
 
 <template>
   <div class="step checkbox">
-    <input type="checkbox" v-model="value" :id="`check-${stepId}`" :name="stepId" />
+    <input
+      :id="`check-${stepId}`"
+      v-model="value"
+      type="checkbox"
+      :name="stepId"
+    >
     <label :for="`check-${stepId}`">
-      <slot></slot>
+      <slot />
     </label>
     <template v-if="link">
-      · <RouterLink :to="`#${linkTo || stepId}`">Détails</RouterLink>
+      · <RouterLink :to="`#${linkTo || stepId}`">
+        Détails
+      </RouterLink>
     </template>
-    <slot name="after-link"></slot>
+    <slot name="after-link" />
   </div>
 </template>

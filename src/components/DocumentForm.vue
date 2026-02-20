@@ -1,8 +1,8 @@
 <script setup>
 import { reactive, watch, ref, inject } from 'vue'
 import DynamicForm from './DynamicForm.vue'
+import MarkdownRenderer from './MarkdownRenderer.vue'
 import { useGlobalStore } from '@/store'
-import { renderMarkdown } from '@/utils'
 import { useRoute } from 'vue-router'
 import documentsComponents from '@/documentsComponents'
 
@@ -135,34 +135,54 @@ const componentTemplate = documentsComponents[props.template.id]
     <div class="grid--row">
       <div class="grid--column hide-for-print">
         <h1>{{ template.name }}</h1>
-        <div
+        <MarkdownRenderer
           v-if="template.description"
           class="text--small"
-          v-html="renderMarkdown(template.description)"
-        ></div>
-        <div v-if="template.help" class="text--small" v-html="renderMarkdown(template.help)"></div>
-        <p class="text--small">Remplissez le formulaire ci-dessous pour obtenir votre document.</p>
+          :source="template.description"
+        />
+        <MarkdownRenderer
+          v-if="template.help"
+          class="text--small"
+          :source="template.help"
+        />
+        <p class="text--small">
+          Remplissez le formulaire ci-dessous pour obtenir votre document.
+        </p>
         <DynamicForm
           :key="formKey"
           :class="{ 'position--sticky': template.stickyForm }"
-          :modelValue="localData"
+          :model-value="localData"
           :disabled="manualEdit"
           :structure="template.structure"
-          @update:modelValue="updateLocalData"
+          @update:model-value="updateLocalData"
         >
-          <p v-if="manualEdit" class="message--info px-1 py-1">
+          <p
+            v-if="manualEdit"
+            class="message--info px-1 py-1"
+          >
             En mode édition, il n'est pas possible de modifier les données du formulaire. Vous
             pouvez désactiver l'édition, mais vous perdrez les modifications effectuées manuellement
             dans le document.
           </p>
-          <button @click.prevent="manualEdit = false" v-if="manualEdit" class="inverted">
+          <button
+            v-if="manualEdit"
+            class="inverted"
+            @click.prevent="manualEdit = false"
+          >
             Désactiver l'édition
           </button>
-          <hr class="hidden" />
-          <button type="submit" class="my-2" @click.prevent="downloadPdf">
+          <hr class="hidden">
+          <button
+            type="submit"
+            class="my-2"
+            @click.prevent="downloadPdf"
+          >
             Télécharger au format PDF
           </button>
-          <button class="my-2 mx-2 inverted" @click.prevent="shareUrl">
+          <button
+            class="my-2 mx-2 inverted"
+            @click.prevent="shareUrl"
+          >
             Partager le document…
           </button>
           <button
@@ -183,19 +203,34 @@ const componentTemplate = documentsComponents[props.template.id]
               <h2>Rendu du document</h2>
             </div>
             <div class="grid--column text--right">
-              <button class="inverted" @click.prevent="manualEdit = true" v-if="!manualEdit">
+              <button
+                v-if="!manualEdit"
+                class="inverted"
+                @click.prevent="manualEdit = true"
+              >
                 Éditer
               </button>
             </div>
           </div>
-          <p v-if="manualEdit" class="message--primary px-1 py-1">
+          <p
+            v-if="manualEdit"
+            class="message--primary px-1 py-1"
+          >
             Vous êtes actuellement en mode édition. Vous pouvez éditer directement le contenu du
             document avant de l'enregistrer.
           </p>
-          <hr class="hidden" />
+          <hr class="hidden">
         </div>
-        <div class="document position--sticky" id="rendered" :contenteditable="manualEdit">
-          <component :is="componentTemplate" :data="localData" :structure="template.structure" />
+        <div
+          id="rendered"
+          class="document position--sticky"
+          :contenteditable="manualEdit"
+        >
+          <component
+            :is="componentTemplate"
+            :data="localData"
+            :structure="template.structure"
+          />
         </div>
       </div>
     </div>
