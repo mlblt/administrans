@@ -106,15 +106,9 @@ watch(
 <template>
   <header>
     <nav>
-      <RouterLink to="/">
-        Administrans
-      </RouterLink>
-      <RouterLink to="/documents">
-        Documents
-      </RouterLink>
-      <RouterLink to="/a-propos">
-        A propos
-      </RouterLink>
+      <RouterLink to="/"> Administrans </RouterLink>
+      <RouterLink to="/documents"> Documents </RouterLink>
+      <RouterLink to="/a-propos"> A propos </RouterLink>
     </nav>
   </header>
   <main>
@@ -131,15 +125,8 @@ watch(
         Vos données ne seront pas perdues. Cliquez sur le lien ci-dessous pour être redirigé·e
         immédiatement.
       </p>
-      <a
-        :href="migrate.migrateUrl"
-        class="button"
-      >Migrer vers {{ migrate.redirectDomain }}</a>
-      <a
-        href="#"
-        class="mx-2"
-        @click.prevent="migrate.show = false"
-      >Me le rappeler plus tard</a>
+      <a :href="migrate.migrateUrl" class="button">Migrer vers {{ migrate.redirectDomain }}</a>
+      <a href="#" class="mx-2" @click.prevent="migrate.show = false">Me le rappeler plus tard</a>
     </div>
     <RouterView />
   </main>
@@ -154,10 +141,8 @@ watch(
       </div>
       <div class="grid--column one-third">
         <p><strong>Liens utiles</strong></p>
-        <RouterLink to="/a-propos#contact">
-          Nous écrire
-        </RouterLink><br>
-        <a href="https://github.com/toutesdesfemmes/administrans"> Page GitHub du projet </a><br>
+        <RouterLink to="/a-propos#contact"> Nous écrire </RouterLink><br />
+        <a href="https://github.com/toutesdesfemmes/administrans"> Page GitHub du projet </a><br />
       </div>
     </div>
     <p />

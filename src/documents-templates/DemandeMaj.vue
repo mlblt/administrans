@@ -1,30 +1,25 @@
 <script setup>
 import useDocumentTemplate from '@/templates'
 
-const p = defineProps({ data: { type: Object, default: () => ({}) }, structure: { type: Array, default: () => [] } })
+const p = defineProps({
+  data: { type: Object, default: () => ({}) },
+  structure: { type: Array, default: () => [] }
+})
 const { renderValue, genderSwitch, renderWithGender } = useDocumentTemplate(p)
 </script>
 
 <template>
   <div class="grid--row">
     <div class="grid--column">
-      <div
-        v-if="renderValue('adresse')"
-        class="adress--sender"
-      >
-        {{ renderValue('prénom') }} {{ renderValue('nom') }}<br>{{ renderValue('adresse') }}
+      <div v-if="renderValue('adresse')" class="adress--sender">
+        {{ renderValue('prénom') }} {{ renderValue('nom') }}<br />{{ renderValue('adresse') }}
         <template v-if="data['téléphone']">
-          <br>Téléphone : {{ renderValue('téléphone') }}
+          <br />Téléphone : {{ renderValue('téléphone') }}
         </template>
-        <template v-if="data['email']">
-          <br>Email : {{ renderValue('email') }}
-        </template>
+        <template v-if="data['email']"> <br />Email : {{ renderValue('email') }} </template>
       </div>
     </div>
-    <div
-      v-if="data.villeDocument && data.dateDocument"
-      class="grid--column date"
-    >
+    <div v-if="data.villeDocument && data.dateDocument" class="grid--column date">
       {{ renderValue('villeDocument') }}, le
       {{ new Date(data.dateDocument).toLocaleDateString('fr-FR') }}
     </div>
@@ -34,12 +29,8 @@ const { renderValue, genderSwitch, renderWithGender } = useDocumentTemplate(p)
   </div>
   <p class="subject">
     Objet : Demande de changement
-    <template v-if="data['changementDemandé'] === 'prénom'">
-      de prénom
-    </template>
-    <template v-if="data['changementDemandé'] === 'civilité'">
-      de civilité
-    </template>
+    <template v-if="data['changementDemandé'] === 'prénom'"> de prénom </template>
+    <template v-if="data['changementDemandé'] === 'civilité'"> de civilité </template>
     <template v-if="data['changementDemandé'] === 'prénomEtCivilité'">
       de prénom et de civilité
     </template>
@@ -50,12 +41,8 @@ const { renderValue, genderSwitch, renderWithGender } = useDocumentTemplate(p)
     Je suis {{ renderValue('prénom') }} {{ renderValue('nom').toUpperCase() }} et je souhaite
     effectuer les démarches de changement
 
-    <template v-if="data['changementDemandé'] === 'prénom'">
-      de prénom
-    </template>
-    <template v-if="data['changementDemandé'] === 'civilité'">
-      de civilité
-    </template>
+    <template v-if="data['changementDemandé'] === 'prénom'"> de prénom </template>
+    <template v-if="data['changementDemandé'] === 'civilité'"> de civilité </template>
     <template v-if="data['changementDemandé'] === 'prénomEtCivilité'">
       de prénom et de civilité
     </template>
@@ -80,9 +67,7 @@ const { renderValue, genderSwitch, renderWithGender } = useDocumentTemplate(p)
   <template v-if="data['changementDemandé'] != 'prénom'">
     <p>
       Je vous demande
-      <template v-if="data['changementDemandé'] === 'prénomEtCivilité'">
-        par ailleurs
-      </template> de
+      <template v-if="data['changementDemandé'] === 'prénomEtCivilité'"> par ailleurs </template> de
       bien vouloir changer ma civilité de « {{ genderSwitch('Madame', 'Monsieur', 'civilité') }} » à
       « {{ genderSwitch('Monsieur', 'Madame', 'civilité') }} » dans vos registres, et ce
       préalablement à toute décision de changement de mention de sexe à l’État-Civil, puisque je
@@ -102,12 +87,8 @@ const { renderValue, genderSwitch, renderWithGender } = useDocumentTemplate(p)
   </template>
   <p>
     Par conséquent, je vous demande de mettre à jour, dans les plus brefs délais,
-    <template v-if="data['changementDemandé'] === 'prénom'">
-      mon prénom
-    </template>
-    <template v-if="data['changementDemandé'] === 'civilité'">
-      ma civilité
-    </template>
+    <template v-if="data['changementDemandé'] === 'prénom'"> mon prénom </template>
+    <template v-if="data['changementDemandé'] === 'civilité'"> ma civilité </template>
     <template v-if="data['changementDemandé'] === 'prénomEtCivilité'">
       mon prénom et ma civilité
     </template>
@@ -123,14 +104,12 @@ const { renderValue, genderSwitch, renderWithGender } = useDocumentTemplate(p)
     Je vous remercie de l'aide que vous m'apporterez dans ma démarche et vous prie de bien vouloir
     croire, Madame, Monsieur, en l'assurance de ma considération,
   </p>
-  <p class="signature">
-    {{ renderValue('prénom') }} {{ renderValue('nom') }}
-  </p>
-  <hr class="hidden">
-  <hr class="hidden">
-  <hr class="hidden">
-  <hr class="hidden">
-  <hr class="hidden">
+  <p class="signature">{{ renderValue('prénom') }} {{ renderValue('nom') }}</p>
+  <hr class="hidden" />
+  <hr class="hidden" />
+  <hr class="hidden" />
+  <hr class="hidden" />
+  <hr class="hidden" />
   <p>Pièces jointes :</p>
   <ul class="attachments">
     <li>Copie de la pièce d'identité de {{ renderValue('prénom') }} {{ renderValue('nom') }}</li>

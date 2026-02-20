@@ -2,7 +2,10 @@
 import useDocumentTemplate from '@/templates'
 import { textToArrays } from '@/utils'
 
-const p = defineProps({ data: { type: Object, default: () => ({}) }, structure: { type: Array, default: () => [] } })
+const p = defineProps({
+  data: { type: Object, default: () => ({}) },
+  structure: { type: Array, default: () => [] }
+})
 const { renderValue, renderDate } = useDocumentTemplate(p)
 </script>
 
@@ -11,7 +14,7 @@ const { renderValue, renderDate } = useDocumentTemplate(p)
     <div class="text--center">
       <h1>Demande de changement de prénom</h1>
       <p>
-        Cerfa N° 16233*04 <br>
+        Cerfa N° 16233*04 <br />
         (Article 60 du code civil)
       </p>
     </div>
@@ -33,19 +36,11 @@ const { renderValue, renderDate } = useDocumentTemplate(p)
       <h2>Votre identité</h2>
       <div class="fieldset">
         <div class="checkbox">
-          <input
-            id="genre-f"
-            type="checkbox"
-            :checked="data['genreÉtatCivil'] === 'féminin'"
-          >
+          <input id="genre-f" type="checkbox" :checked="data['genreÉtatCivil'] === 'féminin'" />
           <label for="genre-m">Madame</label>
         </div>
         <div class="checkbox">
-          <input
-            id="genre-m"
-            type="checkbox"
-            :checked="data['genreÉtatCivil'] === 'masculin'"
-          >
+          <input id="genre-m" type="checkbox" :checked="data['genreÉtatCivil'] === 'masculin'" />
           <label for="genre-m">Monsieur</label>
         </div>
         <p class="field">
@@ -78,8 +73,10 @@ const { renderValue, renderDate } = useDocumentTemplate(p)
         </p>
         <p class="field">
           Code postal :
-          <span class="value">{{ renderValue('adresseCodePostal') }} Commune:
-            {{ renderValue('adresseCommune') }}</span>
+          <span class="value"
+            >{{ renderValue('adresseCodePostal') }} Commune:
+            {{ renderValue('adresseCommune') }}</span
+          >
         </p>
         <p class="field">
           Pays : <span class="value">{{ renderValue('adressePays') }}</span>
@@ -96,24 +93,19 @@ const { renderValue, renderDate } = useDocumentTemplate(p)
       <h2>Votre demande</h2>
       <div class="fieldset">
         <div class="checkbox">
-          <input
-            id="prénoms"
-            type="checkbox"
-            :checked="true"
+          <input id="prénoms" type="checkbox" :checked="true" />
+          <label for="prénoms"
+            >Je demande à ce que désormais, les prénoms apparaissent dans l'ordre déterminé
+            ci-dessous</label
           >
-          <label for="prénoms">Je demande à ce que désormais, les prénoms apparaissent dans l'ordre déterminé
-            ci-dessous</label>
         </div>
         <p
           v-for="(prenom, idx) in renderValue('nouveauxPrénoms', '<Nouveaux prénoms>').split(',')"
           :key="prenom"
           class="field"
         >
-          {{ idx + 1 }}<template v-if="idx === 0">
-            er
-          </template><template v-else>
-            ème
-          </template> Prénom : <span class="value">{{ prenom.trim() }}</span>
+          {{ idx + 1 }}<template v-if="idx === 0"> er </template
+          ><template v-else> ème </template> Prénom : <span class="value">{{ prenom.trim() }}</span>
         </p>
         <p>
           Pour les motifs suivants : (joignez tous les documents utiles à la présente demande afin
@@ -129,21 +121,21 @@ const { renderValue, renderDate } = useDocumentTemplate(p)
         </p>
         <p>Par ailleurs :</p>
         <div class="checkbox">
-          <input
-            id="premièreDemande"
-            type="checkbox"
-            :checked="data.typeDemande === 'première'"
+          <input id="premièreDemande" type="checkbox" :checked="data.typeDemande === 'première'" />
+          <label for="premièreDemande"
+            >Aucune demande de changement de prénom(s) n’a été formulée à ce jour.</label
           >
-          <label for="premièreDemande">Aucune demande de changement de prénom(s) n’a été formulée à ce jour.</label>
         </div>
         <div class="checkbox">
           <input
             id="plusieursDemandes"
             type="checkbox"
             :checked="data.typeDemande === 'plusieurs'"
+          />
+          <label for="plusieursDemandes"
+            >La ou les demande changement de prénoms mentionnées ci-dessous ont déjà été formulées
+            :</label
           >
-          <label for="plusieursDemandes">La ou les demande changement de prénoms mentionnées ci-dessous ont déjà été formulées
-            :</label>
         </div>
         <table class="my-2">
           <thead>
@@ -154,10 +146,7 @@ const { renderValue, renderDate } = useDocumentTemplate(p)
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="(row, idx) in textToArrays(data.demandes, ',', 3)"
-              :key="idx"
-            >
+            <tr v-for="(row, idx) in textToArrays(data.demandes, ',', 3)" :key="idx">
               <td>{{ row[0] }}</td>
               <td>{{ row[1] }}</td>
               <td>{{ row[2] }}</td>
@@ -170,136 +159,84 @@ const { renderValue, renderDate } = useDocumentTemplate(p)
         </p>
         <p class="field">
           <strong>Acte de naissance :</strong>
-          <span
-            v-if="data.majActeNaissance"
-            class="value"
-          >
+          <span v-if="data.majActeNaissance" class="value">
             {{ renderDate('dateNaissance') }} à {{ renderValue('lieuNaissance') }}
           </span>
-          <span
-            v-else
-            class="value"
-          />
+          <span v-else class="value" />
         </p>
         <p class="field">
           <strong>Acte de mariage (le cas échéant) :</strong>
-          <span
-            v-if="data.majActeMariage"
-            class="value"
-          >
+          <span v-if="data.majActeMariage" class="value">
             {{ renderDate('dateMariage') }} à {{ renderValue('lieuMariage') }}
           </span>
-          <span
-            v-else
-            class="value"
-          />
+          <span v-else class="value" />
         </p>
         <p>
           <strong>Acte de naissance du conjoint ou partenaire de PACS (le cas échéant) :</strong>
         </p>
         <p class="field">
           Nom du conjoint/partenaire :
-          <span
-            v-if="data.majActeNaissanceConjoint"
-            class="value"
-          >
+          <span v-if="data.majActeNaissanceConjoint" class="value">
             {{ renderValue('nomConjoint') }}
           </span>
-          <span
-            v-else
-            class="value"
-          />
+          <span v-else class="value" />
         </p>
         <p class="field">
           Prénom(s) :
-          <span
-            v-if="data.majActeNaissanceConjoint"
-            class="value"
-          >
+          <span v-if="data.majActeNaissanceConjoint" class="value">
             {{ renderValue('prénomsConjoint') }}
           </span>
-          <span
-            v-else
-            class="value"
-          />
+          <span v-else class="value" />
         </p>
         <p class="field">
           Date et lieu de naissance :
-          <span
-            v-if="data.majActeNaissanceConjoint"
-            class="value"
-          >
+          <span v-if="data.majActeNaissanceConjoint" class="value">
             {{ renderDate('dateNaissanceConjoint') }} à {{ renderValue('lieuNaissanceConjoint') }}
           </span>
-          <span
-            v-else
-            class="value"
-          />
+          <span v-else class="value" />
         </p>
         <p>
           <strong>Acte de naissance du/des enfant(s) (le cas échéant)</strong>
         </p>
-        <template
-          v-for="(row, idx) in textToArrays(data.enfants, ',', 3)"
-          :key="idx"
-        >
+        <template v-for="(row, idx) in textToArrays(data.enfants, ',', 3)" :key="idx">
           <p class="field">
-            Nom du {{ idx + 1 }}<template v-if="idx === 0">
-              er
-            </template><template v-else>
-              ème
-            </template> enfant :
-            <span
-              v-if="row.length > 0 && data.majActeNaissanceEnfants"
-              class="value"
-            >
+            Nom du {{ idx + 1 }}<template v-if="idx === 0"> er </template
+            ><template v-else> ème </template> enfant :
+            <span v-if="row.length > 0 && data.majActeNaissanceEnfants" class="value">
               {{ row[0] }}
             </span>
-            <span
-              v-else
-              class="value"
-            />
+            <span v-else class="value" />
           </p>
           <p class="field">
             Prénom(s) :
-            <span
-              v-if="row.length > 0 && data.majActeNaissanceEnfants"
-              class="value"
-            >
+            <span v-if="row.length > 0 && data.majActeNaissanceEnfants" class="value">
               {{ row[1] }}
             </span>
-            <span
-              v-else
-              class="value"
-            />
+            <span v-else class="value" />
           </p>
           <p class="field">
             Date et lieu de naissance :
-            <span
-              v-if="row.length > 0 && data.majActeNaissanceEnfants"
-              class="value"
-            >
+            <span v-if="row.length > 0 && data.majActeNaissanceEnfants" class="value">
               {{ row[2] }} à {{ row[3] }}
             </span>
-            <span
-              v-else
-              class="value"
-            />
+            <span v-else class="value" />
           </p>
-          <hr class="hidden">
+          <hr class="hidden" />
         </template>
       </div>
     </div>
     <h2>Attestation sur l'honneur</h2>
     <p>
-      Je soussigné(e)<span class="value">{{ renderValue('prénoms') }}
+      Je soussigné(e)<span class="value"
+        >{{ renderValue('prénoms') }}
         <span class="text--uppercase">{{ renderValue('nom') }}</span>
       </span>
       (prénom(s), nom(s)) certifie sur l'honneur que les renseignements portés sur ce formulaire
       sont exacts.
     </p>
     <p>
-      Fait à<span class="value">{{ renderValue('villeDocument') }}</span>, le<span class="value">{{ renderDate('dateDocument') }}</span>
+      Fait à<span class="value">{{ renderValue('villeDocument') }}</span
+      >, le<span class="value">{{ renderDate('dateDocument') }}</span>
     </p>
     <p style="margin-bottom: 100px">
       <strong>Signature :</strong>

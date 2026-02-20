@@ -26,19 +26,12 @@ watch(value, (v) => {
 
 <template>
   <div class="step checkbox">
-    <input
-      :id="`check-${stepId}`"
-      v-model="value"
-      type="checkbox"
-      :name="stepId"
-    >
+    <input :id="`check-${stepId}`" v-model="value" type="checkbox" :name="stepId" />
     <label :for="`check-${stepId}`">
       <slot />
     </label>
     <template v-if="link">
-      · <RouterLink :to="`#${linkTo || stepId}`">
-        Détails
-      </RouterLink>
+      · <RouterLink :to="`#${linkTo || stepId}`"> Détails </RouterLink>
     </template>
     <slot name="after-link" />
   </div>

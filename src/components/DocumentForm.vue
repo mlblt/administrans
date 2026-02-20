@@ -140,14 +140,8 @@ const componentTemplate = documentsComponents[props.template.id]
           class="text--small"
           :source="template.description"
         />
-        <MarkdownRenderer
-          v-if="template.help"
-          class="text--small"
-          :source="template.help"
-        />
-        <p class="text--small">
-          Remplissez le formulaire ci-dessous pour obtenir votre document.
-        </p>
+        <MarkdownRenderer v-if="template.help" class="text--small" :source="template.help" />
+        <p class="text--small">Remplissez le formulaire ci-dessous pour obtenir votre document.</p>
         <DynamicForm
           :key="formKey"
           :class="{ 'position--sticky': template.stickyForm }"
@@ -156,40 +150,26 @@ const componentTemplate = documentsComponents[props.template.id]
           :structure="template.structure"
           @update:model-value="updateLocalData"
         >
-          <p
-            v-if="manualEdit"
-            class="message--info px-1 py-1"
-          >
+          <p v-if="manualEdit" class="message--info px-1 py-1">
             En mode édition, il n'est pas possible de modifier les données du formulaire. Vous
             pouvez désactiver l'édition, mais vous perdrez les modifications effectuées manuellement
             dans le document.
           </p>
-          <button
-            v-if="manualEdit"
-            class="inverted"
-            @click.prevent="manualEdit = false"
-          >
+          <button v-if="manualEdit" class="inverted" @click.prevent="manualEdit = false">
             Désactiver l'édition
           </button>
-          <hr class="hidden">
-          <button
-            type="submit"
-            class="my-2"
-            @click.prevent="downloadPdf"
-          >
+          <hr class="hidden" />
+          <button type="submit" class="my-2" @click.prevent="downloadPdf">
             Télécharger au format PDF
           </button>
-          <button
-            class="my-2 mx-2 inverted"
-            @click.prevent="shareUrl"
-          >
+          <button class="my-2 mx-2 inverted" @click.prevent="shareUrl">
             Partager le document…
           </button>
           <button
             class="my-2 inverted"
             @click.prevent="
-              deleteData();
-              formKey++;
+              deleteData()
+              formKey++
             "
           >
             Effacer les données…
@@ -203,34 +183,19 @@ const componentTemplate = documentsComponents[props.template.id]
               <h2>Rendu du document</h2>
             </div>
             <div class="grid--column text--right">
-              <button
-                v-if="!manualEdit"
-                class="inverted"
-                @click.prevent="manualEdit = true"
-              >
+              <button v-if="!manualEdit" class="inverted" @click.prevent="manualEdit = true">
                 Éditer
               </button>
             </div>
           </div>
-          <p
-            v-if="manualEdit"
-            class="message--primary px-1 py-1"
-          >
+          <p v-if="manualEdit" class="message--primary px-1 py-1">
             Vous êtes actuellement en mode édition. Vous pouvez éditer directement le contenu du
             document avant de l'enregistrer.
           </p>
-          <hr class="hidden">
+          <hr class="hidden" />
         </div>
-        <div
-          id="rendered"
-          class="document position--sticky"
-          :contenteditable="manualEdit"
-        >
-          <component
-            :is="componentTemplate"
-            :data="localData"
-            :structure="template.structure"
-          />
+        <div id="rendered" class="document position--sticky" :contenteditable="manualEdit">
+          <component :is="componentTemplate" :data="localData" :structure="template.structure" />
         </div>
       </div>
     </div>

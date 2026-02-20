@@ -28,12 +28,6 @@ if (template) {
 }
 </script>
 <template>
-  <DocumentForm
-    v-if="template"
-    :template="template"
-    :prefill-data="$route.query"
-  />
-  <p v-else>
-    Ce document n'existe pas.
-  </p>
+  <DocumentForm v-if="template" :template="template" :prefill-data="$route.query" />
+  <p v-else>Ce document n'existe pas.</p>
 </template>
