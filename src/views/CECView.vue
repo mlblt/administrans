@@ -270,28 +270,23 @@ function foreignResidenceSwitch(foreign, local) {
             déjà utilisés dans votre vie quotidienne.
           </p>
           <p>
-            <strong>Il n'est pas nécessaire de fournir de justificatifs médicaux</strong> pour
-            obtenir gain de cause. D'autre part, nous vous recommandons de limiter au maximum le
-            nombre de justificatifs et attestations que vous joignez à votre demande. En effet, en
-            fournissant de très nombreuses pièces, on habitue les officiers d'état civil et
-            magistrats à des dossiers très fournis, ce qui complique d'autant plus la transition des
-            personnes isolées ou précaires qui ne sont pas en mesure de fournir de tels
-            justificatifs.
+            Nous vous rappelons qu’il n’est pas nécessaire de fournir des justificatifs médicaux ou des photos,
+            seules les attestations de proches ou tout autre document démontrant votre identité au sein de la
+            société suffisent.
           </p>
           <p>
-            Deux ou trois attestations sont normalement largement suffisantes, et si ce n'est pas le
-            cas, vous aurez l'opportunité d'en transmettre d'autres par la suite en complétant votre
-            dossier.
+            N’ayez pas peur de fournir tous les documents en votre possession si vous êtes persuadé·e qu’ils
+            sont utiles et apportent un supplément utile à l’ensemble de votre dossier.
           </p>
           <p>
-            Néanmoins, si vous savez à l'avance que l'endroit ou les personnes qui traitent votre dossier
-            sont connues pour exiger plus de justificatifs ou refuser les demandes malgré la loi,
-            il est certainement plus prudent d'inclure plus de pièces justificatives dans votre demande.
-          </p>
-          <p>
-            Vous pouvez utiliser <a href="https://fransgenre.fr/">la carte Fransgenre</a> pour vous 
-            informer sur les tribunaux et services d'état civil des différentes communes, les délais
-            de réponse et la façon dont les demandes sont traitées.
+            N’hésitez pas à vous rapprocher
+            <a href="https://wikitrans.co/carte">d’une association d’autosupport de votre région</a>.
+            Elles peuvent vous accompagner sur la procédure,
+            d’autant plus qu’elles connaissent sûrement les spécificités de votre ville
+            et pourront vous recommander quel document inclure ou ne pas inclure.
+            Si vous êtes une personne isolée, elles pourront vous aider sur la production de témoignages par exemple.
+            Certaines associations, comme <a href="https://fransgenre.fr/">Fransgenre</a>,
+            recensent les difficultés rencontrées dans certains tribunaux et services d’état civil en France.
           </p>
         </StepDetails>
         <StepDetails stepId="prepareRequest" v-if="store.CecMethod === 'prénomEtSexe'">
