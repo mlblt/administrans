@@ -478,7 +478,7 @@ function foreignResidenceSwitch(foreign, local) {
             usant, crevant, absurde et brutal.
           </p>
           <p>
-            On vous souhaite du repos et de la sérénité après tout ça.N'hésitez pas à nous écrire si
+            On vous souhaite du repos et de la sérénité après tout ça. N'hésitez pas à nous écrire si
             vous avez trouvé Administrans utile, ou si vous souhaitez nous suggérer des
             améliorations !
           </p>
